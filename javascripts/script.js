@@ -164,7 +164,7 @@ function animate() {
 // Start Game, Reset Everything
 function startGame() {
   createCanvas();
-  // renderIntro();
+  renderIntro();
 
   paddleIndex = 0;
   window.requestAnimationFrame(animate);
