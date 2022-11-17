@@ -1,24 +1,6 @@
-const api = require('./api')
-const server = require("http").createServer(api);
-const io = require('socket.io')(server, {
-  cors: {
-    origin: '*',
-    methods: ['GET', 'POST']
-  }
-});
-const sockets = require('./sockets');
-
-const PORT = 3000;
-server.listen(PORT);
-console.log(`Listening on port ${PORT}...`);
-console.log(`http://localhost:3000`);
-
-sockets.listen(io)
-
-/*
+function listen(io) {
 let readyPlayerCount = 0;
-
- io.on("connection", (socket) => {
+io.on("connection", (socket) => {
   console.log("a user connected", socket.id);
   socket.on('ready', () => {
     console.log('Player ready', socket.id);
@@ -37,4 +19,8 @@ let readyPlayerCount = 0;
     console.log(`Client ${socket.id} disconnected: ${reason}`);
     readyPlayerCount--;
   })
-}); */
+});
+}
+module.exports = {
+  listen,
+}
